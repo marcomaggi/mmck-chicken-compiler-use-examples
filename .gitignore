@@ -20,7 +20,6 @@
 .emacs.*
 .gdb_history
 .vimview
-Makefile
 Makefile.in
 aclocal.m4
 autom4te*
