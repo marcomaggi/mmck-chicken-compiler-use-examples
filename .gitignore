@@ -44,3 +44,7 @@ m4/
 autotools/
 compiled/
 meta/autotools/
+*.import.scm
+*.exe
+program-using-beta
+*.c

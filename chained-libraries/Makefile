@@ -143,8 +143,8 @@ TARGETS		= \
 	module-for-expand.import.so	\
 	library-alpha.so		\
 	library-beta.so			\
-	program-using-alpha		\
-	program-using-beta
+	program-using-alpha.exe		\
+	program-using-beta.exe
 
 CLEANFILES	= $(TARGETS) *.so *import.* *.o *.c
 
@@ -204,7 +204,7 @@ program-using-alpha-module-main.o: program-using-alpha-module-main.scm library-a
 	$(CSC_COMPILE_OBJECT_STATIC) $(@) $(<)
 	@echo
 
-program-using-alpha: program-using-alpha-module-main.o library-alpha.so
+program-using-alpha.exe: program-using-alpha-module-main.o library-alpha.so
 	$(CSC_LINK_PROGRAM) $(@) $(<)
 	@echo
 
@@ -254,7 +254,7 @@ program-using-beta-module-main.o: program-using-beta-module-main.scm $(PROGRAM_B
 	$(CSC_COMPILE_OBJECT_STATIC) $(@) $(<)
 	@echo
 
-program-using-beta: program-using-beta-module-main.o program-using-beta-module-one.o
+program-using-beta.exe: program-using-beta-module-main.o program-using-beta-module-one.o
 	$(CSC_LINK_PROGRAM) $(@) $(^)
 	@echo
 
