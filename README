@@ -21,6 +21,14 @@ defined in the "Revised^5 Report on Scheme".
   The last  time the author  bothered to  update this paragraph,  he had
 tested Chicken Scheme version 5.0.0.
 
+  Every  example is  in its  own  subdirectory.  All  the makefiles  are
+written to  support parallelism, so  we could always compile  an example
+with:
+
+   $ make -j3 all
+
+  The makefile rules implemented are the traditional "all" and "clean".
+
 
 A. Resources
 ------------
