@@ -1,0 +1,43 @@
+-*- coding: utf-8-unix -*-
+
+		   MMUX CHICKEN compiler use examples
+		   ==================================
+
+
+Topics
+------
+
+  1. Introduction
+  A. Resources
+
+
+1. Introduction
+---------------
+
+This  project is  a collection  of usage  examples for  the compiler  of
+CHICKEN:  a Scheme-to-C  compiler  supporting the  language features  as
+defined in the "Revised^5 Report on Scheme".
+
+  The last  time the author  bothered to  update this paragraph,  he had
+tested Chicken Scheme version 5.0.0.
+
+
+A. Resources
+------------
+
+Development takes place at:
+
+   <http://github.com/marcomaggi/mmux-chicken-compiler-use-examples/>
+
+the home page of the Chicken Scheme project is at:
+
+		       <http://www.call-cc.org/>
+
+
+### end of file
+# Local Variables:
+# mode: text
+# fill-column: 72
+# paragraph-start: "*"
+# ispell-local-dictionary: "en_GB-ise-w_accents"
+# End:
