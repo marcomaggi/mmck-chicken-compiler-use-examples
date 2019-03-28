@@ -1,7 +1,7 @@
 -*- coding: utf-8-unix -*-
 
-		 Shared library, multi file, with modules
-		=========================================
+		Shared library, multi file, with modules
+		========================================
 
 
 This example  builds a  single shared  library and  a test  program that
@@ -30,7 +30,7 @@ dependency graph.  Notice that unit "gamma" is the main one, so:
 
 * Its invoke code is the last evaluated one.
 
-  The test  program is composed  of the single compilation  unit "main",
+  The test  program is composed  by the single compilation  unit "main",
 which resides  in a  single source  file; being the  only one:  the unit
 "main" does not declare itself as UNIT and does not declare any USES.
 
@@ -50,7 +50,8 @@ module is never imported, so:
   invoke code to start the program.
 
   The  library  module's import  libraries  are  needed to  compile  the
-program's unit.
+program's unit.  The module "main" relies on IMPORT directives to import
+the modules exported by the library.
 
 
 ### end of file
