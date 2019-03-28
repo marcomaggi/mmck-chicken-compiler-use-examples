@@ -40,7 +40,8 @@ dlopen) with the form:
 
    (require-library shared-library)
 
-rather than using REQUIRE-EXTENSION or IMPORT.
+rather  than  using  REQUIRE-EXTENSION  or  IMPORT.   All  the  toplevel
+syntactic bindings are available to the main program.
 
 
 ### end of file

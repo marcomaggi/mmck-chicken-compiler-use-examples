@@ -12,7 +12,11 @@
     (pretty-print 'evaluating-visit-code-of-main)))
 
 (define (main)
-  (list 'main (gamma-func)))
+  (list 'main
+	(alpha-func)
+	(beta-func)
+	(delta-func)
+	(gamma-func)))
 
 (pretty-print 'evaluating-invoke-code-of-main)
 (pretty-print (main))
