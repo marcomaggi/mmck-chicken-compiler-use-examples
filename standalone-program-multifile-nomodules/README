@@ -6,7 +6,7 @@
 
 This  example  builds  a   single  standalone  program,  without  shared
 libraries.  The  source code is  composed by compilation units  with the
-following dependency, directed acyclic graph:
+following dependency, directed acyclic, graph:
 
                              --------------
                  ---------->| (unit alpha) |<----------
