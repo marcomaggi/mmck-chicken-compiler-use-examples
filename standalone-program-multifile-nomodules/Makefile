@@ -22,7 +22,11 @@ gamma.o: gamma.scm
 	$(CSC_COMPILE_OBJECT_STATIC) $(@) $(<)
 	@echo
 
-program.exe: alpha.o beta.o delta.o gamma.o
+main.o: main.scm
+	$(CSC_COMPILE_OBJECT_STATIC) $(@) $(<)
+	@echo
+
+program.exe: main.o alpha.o beta.o delta.o gamma.o
 	$(CSC_LINK_PROGRAM) $(@) $(^)
 	@echo
 
