@@ -60,7 +60,7 @@ shared-library.so: alpha.o beta.o gamma.o delta.o
 
 ## --------------------------------------------------------------------
 
-main.o: main.scm shared-library.so
+main.o: main.scm shared-library.so alpha.import.so beta.import.so delta.import.so gamma.import.so
 	$(CSC_COMPILE_OBJECT_STATIC) $(@) $(<)
 	@echo
 
