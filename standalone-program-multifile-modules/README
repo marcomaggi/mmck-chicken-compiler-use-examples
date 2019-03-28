@@ -41,7 +41,8 @@ module's  import library;  if module  B imports  module A:  the compiler
 dynamically links  itself (through  dlopen) with  the import  library of
 module A to compile module B.
 
-  The main module "main" is never imported, so:
+  The  dependency   graph  between  modules  matches   the  one  between
+compilation units.  The module "main" is never imported, so:
 
 * It does not require the emission of an import library.
 
