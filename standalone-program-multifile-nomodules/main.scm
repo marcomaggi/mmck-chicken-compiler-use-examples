@@ -1,4 +1,4 @@
-;; gamma.scm --
+;; main.scm --
 
 (declare (uses gamma))
 
