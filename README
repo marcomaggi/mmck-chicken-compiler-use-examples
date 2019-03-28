@@ -27,7 +27,12 @@ with:
 
    $ make -j3 all
 
-  The makefile rules implemented are the traditional "all" and "clean".
+  The makefile rules implemented are  the traditional "all", "clean" and
+"check".   The  rule  "check"  will run  the  executable  programs.   In
+addition,  the rule  "clean-no-progs" will  remove all  the intermediate
+files and shared  libraries, but it will leave  the executable programs:
+this is  to check that,  when building standalone programs,  the program
+itself is independent from anything else.
 
 
 A. Resources

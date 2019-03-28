@@ -143,15 +143,24 @@ CSC_LINK_PROGRAM	= $(CSC) $(AM_CHICKEN_PROGFLAGS) -o
 
 #### common variables and rules
 
-CLEANFILES	= $(TARGETS) *.so *import.* *.o *.c
+CLEANFILES		= $(TARGETS) *.so *import.* *.o *.c
+CLEANFILES_NO_PROGS	= *.so *import.* *.o *.c
+
+RM	= rm --force --verbose
 
 ## --------------------------------------------------------------------
 
-.PHONY: all clean
+.PHONY: all clean check clean-no-progs
 
 all: $(TARGETS)
 
 clean:
-	@rm -f $(CLEANFILES)
+	@$(RM) $(CLEANFILES)
+
+check:
+	@for file in ./*.exe ; do $$file ; done
+
+clean-no-progs:
+	@$(RM) $(CLEANFILES_NO_PROGS)
 
 ### end of file
