@@ -35,6 +35,22 @@ this is  to check that,  when building standalone programs,  the program
 itself is independent from anything else.
 
 
+Code evaluation times
+---------------------
+
+This package adopts the following terminology:
+
+Invoke  code: it  is the  code evaluated  at run  time in  libraries and
+programs, when the compilation unit is  "invoked" at start up time.  The
+toplevel forms and right-hand side  of toplevel variable definitions are
+invoke code.
+
+Visit code:  it is the  code evaluated at  expand time in  libraries and
+programs, when the compilation unit is "visited" while being imported by
+another unit.  The contents of BEGIN-FOR-SYNTAX forms and the right-hand
+side of toplevel macro definitions are visit code.
+
+
 A. Resources
 ------------
 
