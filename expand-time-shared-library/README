@@ -1,0 +1,35 @@
+-*- coding: utf-8-unix -*-
+
+		       Expand-time shared library
+		       ==========================
+
+
+This example builds two shared libraries and a test program; the library
+"run-time" loads  the library "expand-time"  to use its features  in its
+visit code; the test program loads the "run-time" library.
+
+  Each library and  the program have a single compilation  unit, so none
+declare a UNIT, none declare a USES.
+
+  Each library has its code in a module: the module name equals the unit
+name.  Every module in the libraries requires the emission of a module's
+import library; if  module B imports module A:  the compiler dynamically
+links itself  (through dlopen) with  the import  library of module  A to
+compile module B.
+
+  The program's compilation  unit has its code in a  module "main"; this
+module is never imported, so:
+
+* It does not require the emission of an import library.
+
+* It exports  no syntactic  bindings, relying on  the evaluation  of its
+  invoke code to start the program.
+
+
+### end of file
+# Local Variables:
+# mode: text
+# fill-column: 72
+# paragraph-start: "*"
+# ispell-local-dictionary: "en_GB-ise-w_accents"
+# End:
