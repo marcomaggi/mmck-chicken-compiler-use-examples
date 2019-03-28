@@ -3,6 +3,12 @@
 (declare (unit alpha)
 	 (emit-import-library alpha))
 
+(begin
+  (import (chicken syntax))
+  (import-for-syntax (chicken pretty-print))
+  (begin-for-syntax
+    (pretty-print 'evaluating-visit-code-of-alpha)))
+
 (module (alpha)
     (the-func)
   (import (scheme)

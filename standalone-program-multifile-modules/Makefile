@@ -30,7 +30,7 @@ beta.import.so: beta.import.scm
 
 ## --------------------------------------------------------------------
 
-delta.o: delta.scm alpha.import.so beta.import.so
+delta.o: delta.scm alpha.import.so
 	$(CSC_COMPILE_OBJECT_STATIC) $(@) $(<)
 	@echo
 
@@ -42,13 +42,25 @@ delta.import.so: delta.import.scm
 
 ## --------------------------------------------------------------------
 
-gamma.o: gamma.scm alpha.import.so beta.import.so delta.import.so
+gamma.o: gamma.scm beta.import.so delta.import.so
+	$(CSC_COMPILE_OBJECT_STATIC) $(@) $(<)
+	@echo
+
+gamma.import.scm: gamma.o
+
+gamma.import.so: gamma.import.scm
+	$(CSC_COMPILE_LIBRARY) $(@) $(<)
+	@echo
+
+## --------------------------------------------------------------------
+
+main.o: main.scm gamma.import.so
 	$(CSC_COMPILE_OBJECT_STATIC) $(@) $(<)
 	@echo
 
 ## --------------------------------------------------------------------
 
-program.exe: alpha.o beta.o delta.o gamma.o
+program.exe: main.o alpha.o beta.o delta.o gamma.o
 	$(CSC_LINK_PROGRAM) $(@) $(^)
 	@echo
 

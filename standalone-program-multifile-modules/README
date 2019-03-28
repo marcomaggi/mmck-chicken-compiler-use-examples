@@ -1,0 +1,44 @@
+-*- coding: utf-8-unix -*-
+
+	      Standalone program, multi file, with modules
+	      ============================================
+
+
+This  example  builds  a   single  standalone  program,  without  shared
+libraries.  The  source code is  composed by compilation units  with the
+following dependency, directed acyclic, graph:
+
+                             --------------
+                 ---------->| (unit alpha) |<----------
+           uses |            --------------            | uses
+                |                                      |
+          -------------                         --------------
+         | (unit beta) |                       | (unit delta) |
+          -------------                         --------------
+                ^                                      ^
+           uses |                                      | uses
+                |            --------------            |
+                 -----------| (unit gamma) |-----------
+                             --------------
+                                    ^
+                                    | uses
+                                    |
+                                 ------
+                                | main |
+                                 ------
+
+each compilation unit is in a  source file.  Notice that unit "main" the
+main one, so:
+
+* It does not declare itself as UNIT, it just declares its USES.
+
+* Its invoke code is the last evaluated one.
+
+
+### end of file
+# Local Variables:
+# mode: text
+# fill-column: 72
+# paragraph-start: "*"
+# ispell-local-dictionary: "en_GB-ise-w_accents"
+# End:

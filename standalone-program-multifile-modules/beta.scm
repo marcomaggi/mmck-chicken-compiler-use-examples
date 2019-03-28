@@ -4,6 +4,12 @@
 	 (uses alpha)
 	 (emit-import-library beta))
 
+(begin
+  (import (chicken syntax))
+  (import-for-syntax (chicken pretty-print))
+  (begin-for-syntax
+    (pretty-print 'evaluating-visit-code-of-beta)))
+
 (module (beta)
     (the-func)
   (import (scheme)
