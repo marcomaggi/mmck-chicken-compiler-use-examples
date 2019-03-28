@@ -27,8 +27,9 @@ following dependency, directed acyclic, graph:
                                 | main |
                                  ------
 
-each compilation unit is in a  source file.  Notice that unit "main" the
-main one, so:
+each  compilation  unit is  in  a  single  source  file.  The  order  of
+evaluation  of each  unit's invoke  code  is established  by the  unit's
+dependency graph.  Notice that unit "main" is the main one, so:
 
 * It does not declare itself as UNIT, it just declares its USES.
 
