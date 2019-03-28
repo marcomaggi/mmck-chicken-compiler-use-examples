@@ -38,12 +38,12 @@ dependency graph.  Notice that unit "main" is the main one, so:
   Each compilation unit has its code in a module: the module name equals
 the unit  name.  Every module,  but "main",  requires the emission  of a
 module's  import library;  if module  B imports  module A:  the compiler
-dynamically  links (with  dlopen)  the  import library  of  module A  to
-compile module B.
+dynamically links  itself (through  dlopen) with  the import  library of
+module A to compile module B.
 
   The main module "main" is never imported, so:
 
-* It does not requires the emission of an import libary.
+* It does not require the emission of an import library.
 
 * It exports  no syntactic  bindings, relying on  the evaluation  of its
   invoke code to start the program.
