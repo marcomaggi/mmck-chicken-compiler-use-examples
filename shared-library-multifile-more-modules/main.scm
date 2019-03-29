@@ -1,5 +1,7 @@
 ;; main.scm --
 
+(require-library shared-library)
+
 (module (main)
     ()
   (import (scheme)
@@ -23,7 +25,7 @@
 	  (gamma::the-func)))
 
   (pretty-print 'evaluating-invoke-code-of-main)
-  (pretty-print (the-func))
+  (pretty-print (main))
   #| end of module |# )
 
 ;;; end of file

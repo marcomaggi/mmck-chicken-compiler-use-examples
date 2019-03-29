@@ -76,7 +76,7 @@ main.o: main.scm shared-library.so alpha.import.so beta.import.so delta.import.s
 	$(CSC_COMPILE_OBJECT_STATIC) $(@) $(<)
 	@echo
 
-program.exe: main.o alpha.o beta.o delta.o gamma.o
+program.exe: main.o
 	$(CSC_LINK_PROGRAM) $(@) $(^)
 	@echo
 

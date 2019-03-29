@@ -2,6 +2,8 @@
 
 (declare (emit-import-library run-time))
 
+(require-library expand-time-library)
+
 (module (run-time)
     (the-func (syntax: the-macro))
   (import (scheme)

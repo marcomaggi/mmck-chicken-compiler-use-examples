@@ -1,5 +1,7 @@
 ;; main.scm --
 
+(require-library shared-library)
+
 (module (main)
     ()
   (import (scheme)
