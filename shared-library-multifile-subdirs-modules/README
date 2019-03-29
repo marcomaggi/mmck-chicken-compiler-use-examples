@@ -1,0 +1,66 @@
+-*- coding: utf-8-unix -*-
+
+      Shared library, multi file, with modules, in subdirectories
+      ===========================================================
+
+
+This example  builds a  single shared  library and  a test  program that
+dynamically  links   to  it.   Library's   source  file  are   in  their
+subdirectory;  program's source  files  are in  their subdirectory;  the
+targets are built in their build subdirectory.
+
+  The library's  source code is  composed by compilation units  with the
+following dependency, directed acyclic, graph:
+
+                             --------------
+                 ---------->| (unit alpha) |<----------
+           uses |            --------------            | uses
+                |                                      |
+          -------------                         --------------
+         | (unit beta) |                       | (unit delta) |
+          -------------                         --------------
+                ^                                      ^
+           uses |                                      | uses
+                |               -------                |
+                 --------------| gamma |---------------
+                                -------
+
+each  compilation  unit is  in  a  single  source  file.  The  order  of
+evaluation  of each  unit's invoke  code  is established  by the  unit's
+dependency graph.  Notice that unit "gamma" is the main one, so:
+
+* It does not declare itself as UNIT, it just declares its USES.
+
+* Its invoke code is the last evaluated one.
+
+  The test  program is composed  by the single compilation  unit "main",
+which resides  in a  single source  file; being the  only one:  the unit
+"main" does not declare itself as UNIT and does not declare any USES.
+
+  Each library's compilation  unit has its code in a  module: the module
+name equals the unit name.  Every  module in the shared library requires
+the emission of a module's import library; if module B imports module A:
+the compiler dynamically  links itself (through dlopen)  with the import
+library of module  A to compile module B.  The  dependency graph between
+modules matches the one between compilation units.
+
+  The program's compilation  unit has its code in a  module "main"; this
+module is never imported, so:
+
+* It does not require the emission of an import library.
+
+* It exports  no syntactic  bindings, relying on  the evaluation  of its
+  invoke code to start the program.
+
+  The  library  module's import  libraries  are  needed to  compile  the
+program's unit.  The module "main" relies on IMPORT directives to import
+the modules exported by the library.
+
+
+### end of file
+# Local Variables:
+# mode: text
+# fill-column: 72
+# paragraph-start: "*"
+# ispell-local-dictionary: "en_GB-ise-w_accents"
+# End:

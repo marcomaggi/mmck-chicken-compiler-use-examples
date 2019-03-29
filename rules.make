@@ -146,15 +146,17 @@ CSC_LINK_PROGRAM	= $(CSC) $(AM_CHICKEN_PROGFLAGS) -o
 CLEANFILES		= $(TARGETS) *.so *import.* *.o *.c
 CLEANFILES_NO_PROGS	= *.so *import.* *.o *.c
 
-RM	= rm --force --verbose
+RM			= rm --force --verbose --recursive
+MV			= mv --verbose
+MKDIR_P			= mkdir -p
 
 ## --------------------------------------------------------------------
 
-.PHONY: all clean check clean-no-progs
+.PHONY: all check clean clean-more clean-no-progs
 
 all: $(TARGETS)
 
-clean:
+clean: clean-more
 	@$(RM) $(CLEANFILES)
 
 check:
@@ -162,5 +164,7 @@ check:
 
 clean-no-progs:
 	@$(RM) $(CLEANFILES_NO_PROGS)
+
+clean-more:
 
 ### end of file
