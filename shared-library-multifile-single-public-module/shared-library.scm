@@ -1,6 +1,7 @@
 ;; shared-library.scm --
 
-(declare (uses alpha)
+(declare (unit shared-library)
+	 (uses alpha)
 	 (uses beta)
 	 (uses delta)
 	 (emit-import-library shared-library))

@@ -24,15 +24,17 @@ graph:
 
 each  compilation  unit is  in  a  single  source  file.  The  order  of
 evaluation  of each  unit's invoke  code  is established  by the  unit's
-dependency graph.  Notice that unit "shared-library" is the main one, so:
+dependency graph.  Notice that unit  "shared-library" is the main one in
+the shared library, and it defines a module with an import library, so:
 
-* It does not declare itself as UNIT, it just declares its USES.
+* It does declare itself as UNIT and it declares its USES.
 
 * Its invoke code is the last evaluated one.
 
   The test  program is composed  by the single compilation  unit "main",
-which resides  in a  single source  file; being the  only one:  the unit
-"main" does not declare itself as UNIT and does not declare any USES.
+which resides in a single source file;  being the only one in a program:
+the unit "main" does not declare itself as UNIT and does not declare any
+USES.
 
   Each library's compilation  unit has its code in a  module: the module
 name equals the unit name.  Every  module in the shared library requires
