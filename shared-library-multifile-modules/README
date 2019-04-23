@@ -24,15 +24,34 @@ graph:
 
 each  compilation  unit is  in  a  single  source  file.  The  order  of
 evaluation  of each  unit's invoke  code  is established  by the  unit's
-dependency graph.  Notice that unit "gamma" is the main one, so:
+dependency  graph.  Notice  that unit  "gamma" is  the main  one in  the
+shared library, so:
 
-* It does not declare itself as UNIT, it just declares its USES.
+* Watch out for the file names, unit names and module names!
+
+  - The name of the shared library is "shared-library.so".
+
+  - The name of the import shared library is "shared-library.import.so".
+
+  - The file name of the main compilation unit is "gamma.scm".
+
+  - The name of the main compilation unit is "gamma".
+
+  - The name of the module in the main compilation unit is "gamma".
+
+  This choice of names, while possible, makes shared library compilation
+  and loading a bit more complicated, so it is discouraged.
+
+* The main compilation  unit has name different from  the shared library
+  files, so:  it does not declare  itself as UNIT, it  just declares its
+  USES.
 
 * Its invoke code is the last evaluated one.
 
   The test  program is composed  by the single compilation  unit "main",
-which resides  in a  single source  file; being the  only one:  the unit
-"main" does not declare itself as UNIT and does not declare any USES.
+which resides in a single source file;  being the only one in a program:
+the unit "main" does not declare itself as UNIT and does not declare any
+USES.
 
   Each library's compilation  unit has its code in a  module: the module
 name equals the unit name.  Every  module in the shared library requires
