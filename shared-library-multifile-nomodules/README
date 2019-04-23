@@ -24,15 +24,17 @@ graph:
 
 each  compilation  unit is  in  a  single  source  file.  The  order  of
 evaluation  of each  unit's invoke  code  is established  by the  unit's
-dependency graph.  Notice that unit "gamma" is the main one, so:
+dependency graph.  Notice that unit "gamma"  is the main one of a shared
+library that defines no modules, so:
 
 * It does not declare itself as UNIT, it just declares its USES.
 
 * Its invoke code is the last evaluated one.
 
   The test  program is composed  of the single compilation  unit "main",
-which resides  in a  single source  file; being the  only one:  the unit
-"main" does not declare itself as UNIT and does not declare any USES.
+which resides in a single source file;  being the only one in a program:
+the unit "main" does not declare itself as UNIT and does not declare any
+USES.
 
   Since  the  shared  library  defines  no  modules:  the  test  program
 dynamically  links itself  with the  shared library  (internally through
