@@ -9,7 +9,7 @@
     (prefix (alpha) alpha::)
     (prefix (beta) beta::)
     (prefix (delta) delta::)
-    (prefix (gamma) gamma::))
+    (prefix (shared-library) shared-library::))
 
   (begin
     (import (chicken syntax))
@@ -22,7 +22,7 @@
 	  (alpha::the-func)
 	  (beta::the-func)
 	  (delta::the-func)
-	  (gamma::the-func)))
+	  (shared-library::the-func)))
 
   (pretty-print 'evaluating-invoke-code-of-main)
   (pretty-print (main))

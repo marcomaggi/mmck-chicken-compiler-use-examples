@@ -5,11 +5,11 @@
 
 
 This example  builds a  single shared  library and  a test  program that
-dynamically  links   to  it.   Library's   source  file  are   in  their
+dynamically  links  to   it.   Library's  source  files   are  in  their
 subdirectory;  program's source  files  are in  their subdirectory;  the
 targets are built in their build subdirectory.
 
-  The library's  source code is  composed by compilation units  with the
+  Library's  source  code is  composed  by  compilation units  with  the
 following dependency, directed acyclic, graph:
 
                              --------------
@@ -21,21 +21,34 @@ following dependency, directed acyclic, graph:
           -------------                         --------------
                 ^                                      ^
            uses |                                      | uses
-                |               -------                |
-                 --------------| gamma |---------------
-                                -------
+                |        -----------------------       |
+                 -------| (unit shared-library) |------
+                         -----------------------
 
 each  compilation  unit is  in  a  single  source  file.  The  order  of
 evaluation  of each  unit's invoke  code  is established  by the  unit's
-dependency graph.  Notice that unit "gamma" is the main one, so:
+dependency graph.  Notice that unit  "shared-library" is the main one in
+the shared library, and it defines a module with an import library, so:
 
-* It does not declare itself as UNIT, it just declares its USES.
+* Watch out for the file names, unit names and module names!
 
-* Its invoke code is the last evaluated one.
+  - The name of the shared library is "shared-library.so".
+
+  - The name of the import shared library is "shared-library.import.so".
+
+  - The file name of the main compilation unit is "shared-library.scm".
+
+  - The name of the main compilation unit is "shared-library".
+
+  - The  name   of  the   module  in  the   main  compilation   unit  is
+    "shared-library".
+
+* It does declare itself as UNIT and it declares its USES.
 
   The test  program is composed  by the single compilation  unit "main",
-which resides  in a  single source  file; being the  only one:  the unit
-"main" does not declare itself as UNIT and does not declare any USES.
+which  resides in  a  single source  file;  being the  only  one in  the
+program: the  unit "main" does not  declare itself as UNIT  and does not
+declare any USES.
 
   Each library's compilation  unit has its code in a  module: the module
 name equals the unit name.  Every  module in the shared library requires
@@ -52,9 +65,9 @@ module is never imported, so:
 * It exports  no syntactic  bindings, relying on  the evaluation  of its
   invoke code to start the program.
 
-  The  library  module's import  libraries  are  needed to  compile  the
-program's unit.  The module "main" relies on IMPORT directives to import
-the modules exported by the library.
+  Library module's import libraries are  needed to compile the program's
+unit.  Module "main"  relies on IMPORT directives to  import the modules
+exported by the library.
 
 
 ### end of file

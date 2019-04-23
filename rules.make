@@ -160,7 +160,7 @@ clean: clean-more
 	@$(RM) $(CLEANFILES)
 
 check:
-	@for file in ./*.exe ; do $$file ; done
+	@for file in ./*.exe ./build/*.exe ; do if test -f "$$file" ; then $(THE_ENV) "$$file" ; fi ; done
 
 clean-no-progs:
 	@$(RM) $(CLEANFILES_NO_PROGS)

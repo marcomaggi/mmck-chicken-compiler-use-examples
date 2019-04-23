@@ -54,20 +54,20 @@ build/delta.import.so: build/delta.import.scm
 
 ## --------------------------------------------------------------------
 
-build/gamma.o: lib/gamma.scm build/beta.import.so build/delta.import.so $(BUILD_DEPS)
+build/shared-library.o: lib/shared-library.scm build/beta.import.so build/delta.import.so $(BUILD_DEPS)
 	$(THE_ENV) $(CSC_COMPILE_OBJECT_SHARED) $(@) $(<)
-	$(MV) gamma.import.scm build/
+	$(MV) shared-library.import.scm build/
 	@echo
 
-build/gamma.import.scm: build/gamma.o
+build/shared-library.import.scm: build/shared-library.o
 
-build/gamma.import.so: build/gamma.import.scm
+build/shared-library.import.so: build/shared-library.import.scm
 	$(THE_ENV) $(CSC_COMPILE_LIBRARY) $(@) $(<)
 	@echo
 
 ## --------------------------------------------------------------------
 
-LIBRARY_OBJECTS	= build/alpha.o build/beta.o build/gamma.o build/delta.o
+LIBRARY_OBJECTS	= build/alpha.o build/beta.o build/delta.o build/shared-library.o
 LIBRARY_DEPS	= $(LIBRARY_OBJECTS) $(BUILD_DEPS)
 
 build/shared-library.so: $(LIBRARY_DEPS)
@@ -76,7 +76,7 @@ build/shared-library.so: $(LIBRARY_DEPS)
 
 ## --------------------------------------------------------------------
 
-PROGRAM_IMPORT_LIB_DEPS	= build/alpha.import.so build/beta.import.so build/delta.import.so build/gamma.import.so
+PROGRAM_IMPORT_LIB_DEPS	= build/alpha.import.so build/beta.import.so build/delta.import.so build/shared-library.import.so
 PROGRAM_DEPS		= build/shared-library.so $(PROGRAM_IMPORT_LIB_DEPS) $(BUILD_DEPS)
 
 build/main.o: prog/main.scm $(PROGRAM_DEPS)
@@ -86,12 +86,5 @@ build/main.o: prog/main.scm $(PROGRAM_DEPS)
 build/program.exe: build/main.o
 	$(THE_ENV) $(CSC_LINK_PROGRAM) $(@) $(<)
 	@echo
-
-## --------------------------------------------------------------------
-
-.PHONY: run-program
-
-run-program: build/program.exe
-	$(THE_ENV) build/program.exe
 
 ### end of file
