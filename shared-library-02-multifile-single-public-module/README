@@ -27,6 +27,19 @@ evaluation  of each  unit's invoke  code  is established  by the  unit's
 dependency graph.  Notice that unit  "shared-library" is the main one in
 the shared library, and it defines a module with an import library, so:
 
+* Watch out for the file names, unit names and module names!
+
+  - The name of the shared library is "shared-library.so".
+
+  - The name of the import shared library is "shared-library.import.so".
+
+  - The file name of the main compilation unit is "shared-library.scm".
+
+  - The name of the main compilation unit is "shared-library".
+
+  - The  name   of  the   module  in  the   main  compilation   unit  is
+    "shared-library".
+
 * It does declare itself as UNIT and it declares its USES.
 
 * Its invoke code is the last evaluated one.
