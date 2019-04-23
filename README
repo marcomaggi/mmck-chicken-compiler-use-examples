@@ -1,6 +1,6 @@
 -*- coding: utf-8-unix -*-
 
-		   MMUX CHICKEN compiler use examples
+		   MMCK CHICKEN compiler use examples
 		   ==================================
 
 
@@ -77,7 +77,7 @@ A. Resources
 
 Development takes place at:
 
-   <http://github.com/marcomaggi/mmux-chicken-compiler-use-examples/>
+   <http://github.com/marcomaggi/mmck-chicken-compiler-use-examples/>
 
 the home page of the Chicken Scheme project is at:
 
