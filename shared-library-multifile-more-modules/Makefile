@@ -54,25 +54,25 @@ delta1.import.so: delta1.import.scm
 
 ## --------------------------------------------------------------------
 
-gamma.o: gamma.scm beta.import.so beta1.import.so delta.import.so delta1.import.so
+shared-library.o: shared-library.scm beta.import.so beta1.import.so delta.import.so delta1.import.so
 	$(CSC_COMPILE_OBJECT_SHARED) $(@) $(<)
 	@echo
 
-gamma.import.scm: gamma.o
+shared-library.import.scm: shared-library.o
 
-gamma.import.so: gamma.import.scm
+shared-library.import.so: shared-library.import.scm
 	$(CSC_COMPILE_LIBRARY) $(@) $(<)
 	@echo
 
 ## --------------------------------------------------------------------
 
-shared-library.so: alpha.o beta.o gamma.o delta.o
+shared-library.so: alpha.o beta.o delta.o shared-library.o
 	$(CSC_LINK_LIBRARY) $(@) $(^)
 	@echo
 
 ## --------------------------------------------------------------------
 
-main.o: main.scm shared-library.so alpha.import.so beta.import.so delta.import.so gamma.import.so
+main.o: main.scm shared-library.so alpha.import.so beta.import.so delta.import.so shared-library.import.so
 	$(CSC_COMPILE_OBJECT_STATIC) $(@) $(<)
 	@echo
 

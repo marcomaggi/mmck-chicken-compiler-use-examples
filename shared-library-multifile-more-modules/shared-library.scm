@@ -1,16 +1,17 @@
-;; gamma.scm --
+;; shared-library.scm --
 
-(declare (uses beta)
+(declare (unit shared-library)
+	 (uses beta)
 	 (uses delta)
-	 (emit-import-library gamma))
+	 (emit-import-library shared-library))
 
 (begin
   (import (chicken syntax))
   (import-for-syntax (chicken pretty-print))
   (begin-for-syntax
-    (pretty-print 'evaluating-visit-code-of-gamma)))
+    (pretty-print 'evaluating-visit-code-of-shared-library)))
 
-(module (gamma)
+(module (shared-library)
     (the-func)
   (import (scheme)
     (chicken pretty-print)
@@ -20,13 +21,13 @@
     (prefix delta1 delta1::))
 
   (define (the-func)
-    (list 'gamma::the-func
+    (list 'shared-library::the-func
 	  (delta::the-func)
 	  (delta1::the-func)
 	  (beta::the-func)
 	  (beta1::the-func)))
 
-  (pretty-print 'evaluating-invoke-code-of-gamma)
+  (pretty-print 'evaluating-invoke-code-of-shared-library)
   #| end of module |# )
 
 ;;; end of file
