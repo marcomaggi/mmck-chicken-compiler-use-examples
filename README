@@ -58,18 +58,28 @@ side of toplevel macro definitions are visit code.
 Sometimes  compilation  fails  and  the  raised  errors  have  "cryptic"
 description.
 
-"Warning: the following extensions are not currently installed: NAME"
----------------------------------------------------------------------
 
-Where NAME is the name of a module.  When this happens while compiling a
-library composed  of multiple source  files, each holding  a compilation
-unit and each holding a module, maybe we have a compilation unit with:
+* Warning: the following extensions are not currently installed: NAME
 
-   (import NAME)
+  Where NAME is the name of a module.  When this happens while compiling
+  a  library  composed   of  multiple  source  files,   each  holding  a
+  compilation  unit  and  each  holding   a  module,  maybe  we  have  a
+  compilation unit with:
 
-and we forgot to:
+     (import NAME)
 
-   (declare (uses NAME))
+  and we forgot to:
+
+     (declare (uses NAME))
+
+
+* Error:  (load)  unable  to  load compiled  module  -  unknown  reason:
+  "NAME.so"
+
+  Where NAME is  the name of a shared library.   When this happens while
+  compiling a  program loading  a shared library:  maybe, in  the shared
+  library, the main compilation unit  and its module have name different
+  from the name of the shared library file.
 
 
 A. Resources
