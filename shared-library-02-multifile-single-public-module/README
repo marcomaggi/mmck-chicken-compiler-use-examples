@@ -18,9 +18,9 @@ graph:
           -------------             |uses       --------------
                 ^                   |                  ^
            uses |                   |                  | uses
-                |           ----------------           |
-                 ----------| shared-library |----------
-                            ----------------
+                |        -----------------------       |
+                 -------| (unit shared-library) |------
+                         -----------------------
 
 each  compilation  unit is  in  a  single  source  file.  The  order  of
 evaluation  of each  unit's invoke  code  is established  by the  unit's
