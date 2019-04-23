@@ -1,7 +1,7 @@
 -*- coding: utf-8-unix -*-
 
-		Shared library, multi file, with modules
-		========================================
+	 Shared library, multi file, with modules, weird names
+	 =====================================================
 
 
 This example  builds a  single shared  library and  a test  program that
