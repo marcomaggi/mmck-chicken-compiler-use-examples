@@ -6,7 +6,7 @@
     ()
   (import (scheme)
     (chicken pretty-print)
-    (prefix run-time run-time::))
+    (prefix run-time-library run-time-library::))
 
   (begin
     (import (chicken syntax))
@@ -16,8 +16,8 @@
 
   (define (main)
     (list 'main
-	  (run-time::the-func)
-	  (run-time::the-macro)))
+	  (run-time-library::the-func)
+	  (run-time-library::the-macro)))
 
   (pretty-print 'evaluating-invoke-code-of-main)
   (pretty-print (main))

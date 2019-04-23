@@ -8,14 +8,17 @@ This example builds two shared libraries and a test program; the library
 "run-time" loads  the library "expand-time"  to use its features  in its
 visit code; the test program loads the "run-time" library.
 
-  Each library and  the program have a single compilation  unit, so none
-declare a UNIT, none declare a USES.
+  Each library has  a single source file and a  single compilation unit;
+each compilation unit declares itself as UNIT; none declares a USES.
+
+  The program  has a single source  file and a single  compilation unit;
+being the only one: it does not declare a UNIT.
 
   Each library has its code in a module: the module name equals the unit
-name.  Every module in the libraries requires the emission of a module's
-import library; if  module B imports module A:  the compiler dynamically
-links itself  (through dlopen) with  the import  library of module  A to
-compile module B.
+name and the library file name.   Every module in the libraries requires
+the emission of a module's import library; if module B imports module A:
+the compiler dynamically  links itself (through dlopen)  with the import
+library of module A to compile module B.
 
   The program's compilation  unit has its code in a  module "main"; this
 module is never imported, so:
